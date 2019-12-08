@@ -1,0 +1,35 @@
+Package: imageNet
+Title: Prodeces a concise, customizable visualization of a provided network.
+Version: 0.0.1
+Authors@R: 
+    c(person(given = "Kaitlyn",
+           family = "Thomas-Franz",
+           role = c("aut"),
+           email = "kthomasfranz@wesleyan.edu",),
+    person(given = "Dhhyey",
+           family = "Shah",
+           role = c("aut"),
+           email = "dshah@wesleyan.edu",),
+   person(given= "Robert", family="Kabacoff", 
+         role=c("cre"), email="rkabacoff@wesleyan.edu"))
+Description: What the package does (one paragraph).
+Date: 2019-12-12 
+BugReports: https://github.com/kthomasfranz/imageNet/issues
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    dplyr,
+    tidygraph,
+    igraph,
+    ggraph,
+    ggthemes,
+    ggplot2,
+    readr,
+    igraphdata,
+    leaflet
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 6.1.1
