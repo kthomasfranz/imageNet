@@ -184,7 +184,6 @@ imageNet<-function(data, nodes=NULL, layout = "lgl", label, directed=F, node_col
 
   ##label
   if (missing(label)){
-    print(vertex_attr_names(data)[1])
     text <- function() geom_node_text(aes(label=get(vertex_attr_names(data)[1])),
                                       colour = 'navy', vjust = 0.4)
   }
