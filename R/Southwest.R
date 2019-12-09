@@ -9,7 +9,9 @@
 #'   \item{\code{DEST}}{integer, the 3-letter codes of the destination airport}
 #'}
 #' @details Edges data frame for Southwest network data.
+#' @source US Bureau of Transportation Statistics: Airline On-Time Performance Database
 #' @docType data
 #' @keywords datasets
 #' @name Southwest
+#' @usage Southwest
 NULL

@@ -12,6 +12,12 @@
   \item{\code{ORIGIN}}{integer, the 3-letter codes of the origin airport}
   \item{\code{DEST}}{integer, the 3-letter codes of the destination airport}
 }}
+\source{
+US Bureau of Transportation Statistics
+}
+\usage{
+Southwest
+}
 \description{
 Network of SouthWest airlines routes between 1987 and 1997
 }

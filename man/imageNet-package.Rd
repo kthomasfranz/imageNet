@@ -4,9 +4,9 @@
 \name{imageNet-package}
 \alias{imageNet}
 \alias{imageNet-package}
-\title{imageNet: Produces a concise, customizable visualization of a provided network.}
+\title{imageNet: Produces customizable visualizations of network graphs.}
 \description{
-What the package does (one paragraph).
+The goal of the imageNet package is to allow for users to produce customizable graphs of their networks, with option of producing plots in standard form and geographically when applicable.
 }
 \seealso{
 Useful links:

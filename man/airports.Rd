@@ -11,6 +11,12 @@
   \item{\code{LATITUDE}}{double, geographic latitude}
   \item{\code{LONGITUDE}}{double, geographic longitude}
 }}
+\source{
+US Bureau of Transportation Statistics
+}
+\usage{
+airports
+}
 \description{
 Information on all airports in the United States
 }

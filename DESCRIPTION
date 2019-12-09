@@ -1,5 +1,5 @@
 Package: imageNet
-Title: Produces a concise, customizable visualization of a provided network.
+Title: Produces customizable visualizations of network graphs.
 Version: 0.0.1
 Authors@R: 
     c(person(given = "Kaitlyn",
@@ -12,7 +12,7 @@ Authors@R:
            email = "dshah@wesleyan.edu",),
    person(given= "Robert", family="Kabacoff", 
          role=c("cre"), email="rkabacoff@wesleyan.edu"))
-Description: What the package does (one paragraph).
+Description: The goal of the imageNet package is to allow for users to produce customizable graphs of their networks, with option of producing plots in standard form and geographically when applicable.
 Date: 2019-12-12 
 BugReports: https://github.com/kthomasfranz/imageNet/issues
 License: MIT + file LICENSE
@@ -27,7 +27,8 @@ Imports:
     igraphdata,
     leaflet,
     dplyr,
-    igraph
+    igraph,
+    ggmap
 Suggests: 
     knitr,
     rmarkdown,

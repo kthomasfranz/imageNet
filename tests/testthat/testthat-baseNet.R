@@ -1,18 +1,18 @@
-context("imageNet function")
+context("baseNet function")
 
 test_that("errors generated from bad input", {
   library(igraphdata)
   data(karate)
   data(mtcars)
 
-  expect_error(imageNet(), '"data" is missing')
-  expect_error(imageNet(mtcars), "Invalid vertex id")
-  expect_error(imageNet(karate, layout=c), "layout function must return an object")
-  expect_error(imageNet(karate, label=beef), "Label error")
-  expect_error(imageNet(karate, node_color=beef), "Node color error")
-  expect_error(imageNet(karate, node_size="purple"), "Node size error")
-  expect_error(imageNet(karate, edge_color=beef), "Edge color error")
-  expect_error(imageNet(karate, edge_size="purple"), "Edge size error")
+  expect_error(baseNet(), '"data" is missing')
+  expect_error(baseNet(mtcars), "Invalid vertex id")
+  expect_error(baseNet(karate, layout="bananas"), "layout function must return an object")
+  expect_error(baseNet(karate, label=none), "Label error")
+  expect_error(baseNet(karate, node_color=left), "Node color error")
+  expect_error(baseNet(karate, node_size="purple"), "Node size error")
+  expect_error(baseNet(karate, edge_color=beef), "Edge color error")
+  expect_error(baseNet(karate, edge_size="purple"), "Edge size error")
 })
 
 test_that("output correct answer", {
@@ -46,7 +46,7 @@ test_that("output correct answer", {
     theme_graph()
 
   ##Testthat
-  expect_equal(imageNet(karate)$data, data)
-  expect_equal(class(imageNet(karate, label=name, layout = 'kk')$network), class(g))
-  expect_equivalent(imageNet(karate, label=name, layout = "kk")$network, g)
+  expect_equal(baseNet(karate)$data, data)
+  expect_equal(class(baseNet(karate, label=name, layout = 'kk')$network), class(g))
+  expect_equivalent(baseNet(karate, label=name, layout = "kk")$network, g)
 })

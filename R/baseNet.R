@@ -1,25 +1,32 @@
-#' @title Creates an image of network in R
-#' @description \code{imageNet} helps provide users with clear, concise visualizations of
-#' their networks so that they can perform effective analysis.
+#' @title Creates a visual graph of a given network
+#' @description \code{baseNet} helps provide users with clear, concise visualizations of
+#' their standard network graphs so that they can perform an effective analysis of the network.
 #' @param data A network object that can be converted to a tidygraph tbl_graph
 #' (acceptable classes include 'data.frame', 'igraph', 'list', 'matrix', and 'network').
 #' See ?tbl_graph for more information about accepted classes of networks.
-#' @param nodes A data.frame containing information about the nodes in the graph, Default: NULL
+#' @param nodes A data.frame containing information about the nodes in the graph. Default: NULL
 #' @param layout The type of layout used to plot the network using ggraph. Either a valid string, a function, a matrix,
 #' or a data.frame. See ?ggraph for more information. Default: 'lgl'
 #' @param label The variable from the nodes table that should be used to label the nodes in
-#' the plotted network.  Default: first column of the nodes table
-#' @param directed 	Indicates if the constructed graph should be directed, Default: F
-#' @param node_color PARAM_DESCRIPTION, Default: "cornflowerblue"
-#' @param node_size PARAM_DESCRIPTION, Default: 8
-#' @param edge_color PARAM_DESCRIPTION, Default: "slategrey"
-#' @param edge_size PARAM_DESCRIPTION, Default: 0.6
-#' @return list containing data in the form of a tidygraph & ggmap of network
-#' @details The \code{imageNet} function converts the user's network into a \code{tidygraph} object
-#' and plots the network using \code{ggmap}. In order to operate this fucntion effectively,
-#' it is expected that the user has an elementary understanding of network analysis and knows how
-#' to perform a basic evaluation of some type of class of networks
-#' (data.frame, igraph, network, etc.) in R.
+#' the plotted network. Default: first column of the nodes table
+#' @param directed 	Indicates if the constructed graph should be directed. Default: F
+#' @param node_color The color of the nodes of the network.  Accepted inputs are either a character vector
+#' that notes a specific color (ex."red") or the name of a variable from the nodes table.
+#' Default: "cornflowerblue"
+#' @param node_size The size of the nodes of the network.  Accepted inputs are either a numeric vector
+#' that notes a specific size (ex. 6) or the name of a variable from the nodes table. Default: 8
+#' @param edge_color The color of the edges of the network.  Accepted inputs are either a character
+#' vector that notes a specific color (ex."red") or the name of a variable from the edges table.
+#' Default: "slategrey"
+#' @param edge_size The size/width of the edges of the network.  Accepted inputs are either a numeric
+#' vector that notes a specific size (ex. 0.5) or the name of a variable from the nodes table.
+#' Default: 0.6
+#' @return A list (k) containing the network data in the form of a tidygraph (k$data) and a ggmap
+#' object of the plotted network (k$network).
+#' @details The \code{baseNet} function converts the user's network into a \code{tidygraph} class
+#' object, returning the both the tidygraph object and plotting the network using \code{ggmap}.  This
+#' allows for the user to futher edit the network object as needed as well as allowing them to
+#' add further modifications to the ggmap plot, such as editing the title.
 #' @import tidygraph
 #' @import dplyr
 #' @import igraph
@@ -31,12 +38,12 @@
 #' @examples
 #' library(igraphdata)
 #' data("karate")
-#' imageNet(karate, label=name, layout="nicely")
-#' @rdname imageNet
+#' baseNet(karate, label=name, layout="nicely")
+#' @rdname baseNet
 #' @export
 
-imageNet<-function(data, nodes=NULL, layout = "lgl", label, directed=F, node_color,
-                   node_size, edge_color, edge_size){
+baseNet<-function(data, nodes=NULL, layout = "lgl", label, directed=F, node_color,
+                  node_size, edge_color, edge_size){
   title<-paste0("Network Graph of ", deparse(substitute(data)))
   title<-paste0(title, " data")
 

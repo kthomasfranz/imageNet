@@ -9,7 +9,9 @@
 #'}
 #' @details Geographic nodes data frame for the Southwest network data.  For more information on edges of
 #' network, see ?Southwest
+#' @source US Bureau of Transportation Statistics: Airline On-Time Performance Database
 #' @docType data
 #' @keywords datasets
 #' @name airports
+#' @usage airports
 NULL
