@@ -20,8 +20,8 @@
 #' it is expected that the user has an elementary understanding of network analysis and knows how
 #' to perform a basic evaluation of some type of class of networks
 #' (data.frame, igraph, network, etc.) in R.
-#' @import dplyr
 #' @import tidygraph
+#' @import dplyr
 #' @import igraph
 #' @import ggraph
 #' @import ggthemes

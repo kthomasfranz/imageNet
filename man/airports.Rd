@@ -11,9 +11,6 @@
   \item{\code{LATITUDE}}{double, geographic latitude}
   \item{\code{LONGITUDE}}{double, geographic longitude}
 }}
-\usage{
-airports
-}
 \description{
 Information on all airports in the United States
 }

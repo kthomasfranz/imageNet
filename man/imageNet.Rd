@@ -2,7 +2,7 @@
 % Please edit documentation in R/imageNet.R
 \name{imageNet}
 \alias{imageNet}
-\title{\code{imageNet}: Creates image of network in R}
+\title{Creates an image of network in R}
 \usage{
 imageNet(data, nodes = NULL, layout = "lgl", label, directed = F,
   node_color, node_size, edge_color, edge_size)
