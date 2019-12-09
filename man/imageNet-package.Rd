@@ -4,7 +4,7 @@
 \name{imageNet-package}
 \alias{imageNet}
 \alias{imageNet-package}
-\title{imageNet: Prodeces a concise, customizable visualization of a provided network.}
+\title{imageNet: Produces a concise, customizable visualization of a provided network.}
 \description{
 What the package does (one paragraph).
 }

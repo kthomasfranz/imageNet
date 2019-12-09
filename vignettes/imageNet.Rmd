@@ -1,5 +1,5 @@
 ---
-title: "Introduction to imageNet function"
+title: "Introduction to the imageNet function"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{imageNet}

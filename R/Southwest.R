@@ -12,5 +12,4 @@
 #' @docType data
 #' @keywords datasets
 #' @name Southwest
-#' @usage Southwest
 NULL

@@ -1,5 +1,5 @@
 Package: imageNet
-Title: Prodeces a concise, customizable visualization of a provided network.
+Title: Produces a concise, customizable visualization of a provided network.
 Version: 0.0.1
 Authors@R: 
     c(person(given = "Kaitlyn",
@@ -30,6 +30,7 @@ Imports:
     leaflet
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1

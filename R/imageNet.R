@@ -1,4 +1,4 @@
-#' @title \code{imageNet}: Creates image of network in R
+#' @title Creates an image of network in R
 #' @description \code{imageNet} helps provide users with clear, concise visualizations of
 #' their networks so that they can perform effective analysis.
 #' @param data A network object that can be converted to a tidygraph tbl_graph
@@ -39,30 +39,79 @@ imageNet<-function(data, nodes=NULL, layout = "lgl", label, directed=F, node_col
                    node_size, edge_color, edge_size){
   title<-paste0("Network Graph of ", deparse(substitute(data)))
   title<-paste0(title, " data")
+
   if(is.data.frame(data)){
     data = tbl_graph(edges=data, nodes=nodes, directed = directed)
   }
   if(is.igraph(data)){
     data = as_tbl_graph(data, directed = directed)
   }
+  else{
+    data = as_tbl_graph(data, directed = directed)
+  }
 
+  label_test<-deparse(substitute(label))
+  node_s_test<-deparse(substitute(node_size))
+  node_c_test<-deparse(substitute(node_color))
+  edge_s_test<-deparse(substitute(edge_size))
+  edge_c_test<-deparse(substitute(edge_color))
+
+  ##Add Centrality Measures to Nodes/Edges Tables
   df<-data%>%
     activate(edges)
   df<-as_tibble(df)%>%
     group_by(from, to)%>%
     summarise(edge_weight=n())%>%
     ungroup()
-
   data<-data%>%
     activate(edges) %>%
     left_join(df, by = c("from", "to"))
-
   data<-data%>%
     activate(nodes)%>%
     mutate(betweenness = centrality_betweenness(directed=directed)) %>%
     mutate(closeness = centrality_closeness())%>%
     mutate(degree=centrality_degree())%>%
     mutate(eigen=centrality_eigen(directed=directed))
+
+  ##Check for Appropriate Edge and Node Inputs
+  test_df<-data%>%
+    activate(nodes)%>%
+    as_tibble()
+  if (!missing(label)){
+    if (!is.character(substitute(label))){
+      if (is.null(test_df[[label_test]])){
+        stop("Label error: your label must be a character vector or the name of a variable from the nodes table")
+      }
+    }
+  }
+  if(!missing(node_color)){
+    if (!is.character(substitute(node_color))){
+      if (is.null(test_df[[node_c_test]])){
+        stop("Node color error: your input for node color must be a character vector or the name of a variable from the nodes table")
+      }
+    }
+  }
+  if(!missing(node_size)){
+    if (!is.numeric(substitute(node_size))){
+      if (is.null(test_df[[node_s_test]])){
+        stop("Node size error: your input for node size must be an integer or the name of a variable from the nodes table")
+      }
+    }
+  }
+  if(!missing(edge_color)){
+    if (!is.character(substitute(edge_color))){
+      if (is.null(df[[edge_c_test]])){
+        stop("Edge color error: your input for node color must be a character vector or the name of a variable from the edges table")
+      }
+    }
+  }
+  if(!missing(edge_size)){
+    if (!is.numeric(substitute(edge_size))){
+      if (is.null(df[[edge_s_test]])){
+        stop("Edge size error: your input for node size must be an integer or the name of a variable from the edges table")
+      }
+    }
+  }
 
   ##Node Customization
   node_c<-enquo(node_color)
@@ -105,7 +154,6 @@ imageNet<-function(data, nodes=NULL, layout = "lgl", label, directed=F, node_col
   }else{
     edge_arrow=NULL
   }
-
   if (missing(edge_color) & missing(edge_size)){
     link <- function() geom_edge_link(edge_color="slategrey", edge_width=0.6, arrow=edge_arrow)
   }

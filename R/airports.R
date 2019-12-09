@@ -12,5 +12,4 @@
 #' @docType data
 #' @keywords datasets
 #' @name airports
-#' @usage airports
 NULL
