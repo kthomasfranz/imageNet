@@ -6,9 +6,10 @@
 #' See ?tbl_graph for more information about accepted classes of networks.
 #' @param nodes A data.frame containing information about the nodes in the graph. Default: NULL
 #' @param layout The type of layout used to plot the network using ggraph. Either a valid string, a function, a matrix,
-#' or a data.frame. See ?ggraph for more information. Default: 'lgl'
+#' or a data.frame. See ?ggraph for more information. Default: "lgl"
 #' @param label The variable from the nodes table that should be used to label the nodes in
 #' the plotted network. Default: first column of the nodes table
+#' @param label_color The color of the label. Default: "navy"
 #' @param directed 	Indicates if the constructed graph should be directed. Default: F
 #' @param node_color The color of the nodes of the network.  Accepted inputs are either a character vector
 #' that notes a specific color (ex."red") or the name of a variable from the nodes table.
@@ -21,12 +22,22 @@
 #' @param edge_size The size/width of the edges of the network.  Accepted inputs are either a numeric
 #' vector that notes a specific size (ex. 0.5) or the name of a variable from the nodes table.
 #' Default: 0.6
-#' @return A list (k) containing the network data in the form of a tidygraph (k$data) and a ggmap
-#' object of the plotted network (k$network).
+#' @return A list, k, containing the network data in the form of a tidygraph, k$data, and a ggmap
+#' object of the plotted network, k$network.
 #' @details The \code{baseNet} function converts the user's network into a \code{tidygraph} class
 #' object, returning the both the tidygraph object and plotting the network using \code{ggmap}.  This
 #' allows for the user to futher edit the network object as needed as well as allowing them to
-#' add further modifications to the ggmap plot, such as editing the title.
+#' add further modifications to the ggmap plot, such as editing the title.  In order to customize the nodes
+#' of the network using a measure of centrality, the user must input one of the values featured bellow into the
+#' node_color/node_size aruguments, which correspond with following tidygraph centrality measurement functions:
+#' \itemize{
+##'  \item{betweenness:} { centrality_betweenness()}
+##'  \item{closeness:}{ centrality_closeness()}
+##'  \item{degree:}{ centrality_degree()}
+##'  \item{eigen:}{ centrality_eigen()}
+##' }
+##' Users also have the option of customizing the edges of their network using the variable \strong{edge_weight}, which
+##' notes the weight between two edges.
 #' @import tidygraph
 #' @import dplyr
 #' @import igraph
@@ -42,7 +53,7 @@
 #' @rdname baseNet
 #' @export
 
-baseNet<-function(data, nodes=NULL, layout = "lgl", label, directed=F, node_color,
+baseNet<-function(data, nodes=NULL, layout = "lgl", label, label_color, directed=F, node_color,
                   node_size, edge_color, edge_size){
   title<-paste0("Network Graph of ", deparse(substitute(data)))
   title<-paste0(title, " data")
@@ -191,13 +202,25 @@ baseNet<-function(data, nodes=NULL, layout = "lgl", label, directed=F, node_colo
 
   ##label
   if (missing(label)){
-    text <- function() geom_node_text(aes(label=get(vertex_attr_names(data)[1])),
-                                      colour = 'navy', vjust = 0.4)
+    if (missing(label_color)){
+      text <- function() geom_node_text(aes(label=get(vertex_attr_names(data)[1])),
+                                        colour = 'navy', vjust = 0.4)
+    }else{
+      text <- function() geom_node_text(aes(label=get(vertex_attr_names(data)[1])),
+                                        colour = label_color, vjust = 0.4)
+    }
+
   }
   else{
-    label=enquo(label)
-    text <- function() geom_node_text(aes(label=!!label),
+    if (missing(label_color)){
+      label=enquo(label)
+      text <- function() geom_node_text(aes(label=!!label),
                                       colour = 'navy', vjust = 0.4)
+    }else{
+      label=enquo(label)
+      text <- function() geom_node_text(aes(label=!!label),
+                                        colour = label_color, vjust = 0.4)
+    }
   }
 
   ##graph

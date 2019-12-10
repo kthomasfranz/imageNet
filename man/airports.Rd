@@ -12,7 +12,7 @@
   \item{\code{LONGITUDE}}{double, geographic longitude}
 }}
 \source{
-US Bureau of Transportation Statistics
+US Bureau of Transportation Statistics: Airline On-Time Performance Database
 }
 \usage{
 airports

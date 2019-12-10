@@ -4,8 +4,8 @@
 \alias{baseNet}
 \title{Creates a visual graph of a given network}
 \usage{
-baseNet(data, nodes = NULL, layout = "lgl", label, directed = F,
-  node_color, node_size, edge_color, edge_size)
+baseNet(data, nodes = NULL, layout = "lgl", label, label_color,
+  directed = F, node_color, node_size, edge_color, edge_size)
 }
 \arguments{
 \item{data}{A network object that can be converted to a tidygraph tbl_graph
@@ -19,6 +19,8 @@ or a data.frame. See ?ggraph for more information. Default: 'lgl'}
 
 \item{label}{The variable from the nodes table that should be used to label the nodes in
 the plotted network. Default: first column of the nodes table}
+
+\item{label_color}{The color of the label. Default: 'navy'}
 
 \item{directed}{Indicates if the constructed graph should be directed. Default: F}
 
@@ -38,8 +40,8 @@ vector that notes a specific size (ex. 0.5) or the name of a variable from the n
 Default: 0.6}
 }
 \value{
-A list (k) containing the network data in the form of a tidygraph (k$data) and a ggmap
-object of the plotted network (k$network).
+A list, k, containing the network data in the form of a tidygraph, k$data, and a ggmap
+object of the plotted network, k$network.
 }
 \description{
 \code{baseNet} helps provide users with clear, concise visualizations of
@@ -49,7 +51,17 @@ their standard network graphs so that they can perform an effective analysis of 
 The \code{baseNet} function converts the user's network into a \code{tidygraph} class
 object, returning the both the tidygraph object and plotting the network using \code{ggmap}.  This
 allows for the user to futher edit the network object as needed as well as allowing them to
-add further modifications to the ggmap plot, such as editing the title.
+add further modifications to the ggmap plot, such as editing the title.  In order to customize the nodes
+of the network using a measure of centrality, the user must input one of the values featured bellow into the
+node_color/node_size aruguments, which correspond with following tidygraph centrality measurement functions:
+\itemize{
+ \item{betweenness:} { centrality_betweenness()}
+ \item{closeness:}{ centrality_closeness()}
+ \item{degree:}{ centrality_degree()}
+ \item{eigen:}{ centrality_eigen()}
+}
+Users also have the option of customizing the edges of their network using the variable \strong{edge_weight}, which
+notes the weight between two edges.
 }
 \examples{
 library(igraphdata)

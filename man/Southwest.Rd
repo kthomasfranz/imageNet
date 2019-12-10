@@ -13,7 +13,7 @@
   \item{\code{DEST}}{integer, the 3-letter codes of the destination airport}
 }}
 \source{
-US Bureau of Transportation Statistics
+US Bureau of Transportation Statistics: Airline On-Time Performance Database
 }
 \usage{
 Southwest

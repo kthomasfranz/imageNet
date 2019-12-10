@@ -7,7 +7,7 @@ test_that("errors generated from bad input", {
 
   expect_error(baseNet(), '"data" is missing')
   expect_error(baseNet(mtcars), "Invalid vertex id")
-  expect_error(baseNet(karate, layout="bananas"), "layout function must return an object")
+  expect_error(baseNet(karate, layout="bananas"), "not found")
   expect_error(baseNet(karate, label=none), "Label error")
   expect_error(baseNet(karate, node_color=left), "Node color error")
   expect_error(baseNet(karate, node_size="purple"), "Node size error")

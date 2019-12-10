@@ -1,0 +1,53 @@
+---
+title: "Introduction to the baseNet function"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{baseNet}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width=7.5, fig.height=6, fig.align = "center"
+)
+```
+
+The purpose of the **imageNet** package is to allow for users to produce clear and concise graphs of their networks. As a part of this package, the **baseNet** function produces a customizable visualizations of the standard network. This document is intended to show you how to best use the baseNet function.
+
+```{r setup, include=FALSE}
+library(imageNet)
+library(tidygraph)
+```
+
+## Example Dataset: Karate Social Network
+To understand how to use the baseNet function, we’ll use the **karate** dataset as an example. This igraph dataset is a social network that maps relationships between members of a university karate club. The data is a part of the igraphdata package and is documented in greater detail in ?igraphdata::karate
+
+```{r}
+library(igraphdata)
+data("karate")
+as_tbl_graph(karate)
+```
+
+As you can see above, the dataset contains 24 unique nodes and 78 edges.  When we plot the igraph network using the standard plot() function, the following visulization is produced:
+
+```{r dpi=100, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+plot(karate)
+```
+
+While this graph allows for us to gain a general understanding of our network, it could be improved significantly. One may find it beneficial to label the nodes using the complete name of each karate club member. Additionally, there is no key that makes it clear that the nodes are colored based on the "Faction" variable. Not only would it be good to know this information, but perhaps we would like to color the nodes based on some other variable. Furthermore, we might want to include a title that gives us a bit more information about the network. Now let's see how the baseNet function can be applied to the karate data to allow us to gain a better understanding of the network.  
+
+```{r, dpi=100, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+k<-baseNet(karate, label=name, layout="fr")
+k
+```
+Note that the baseNet function produces a list, k, that contains both a tidygraph of the network (data) and a ggraph object of the network plot (network). Regardless, baseNet allows for the user to customize their network graph even further than see above.  Let's say one wishes to size the nodes based on their eigenvalue centricity.  Then, the user should input the value **eigen** into the **node_color** argument of the baseNet function, which will produce the following plot:
+
+```{r dpi=100, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+k<-baseNet(karate, label=name, layout="fr", node_size=eigen)
+k$network
+```
+
+Overall, the baseNet function allows users to modify the node size, node color, edge size, and edge color of their networks. They also have the option of specifying the label for the nodes, the color of the label color, and the layout of the network. For more information about the baseNet function and the ways in which it can be modified, please use ?imageNet::baseNet
