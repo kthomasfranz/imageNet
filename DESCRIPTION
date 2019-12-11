@@ -4,14 +4,12 @@ Version: 0.0.1
 Authors@R: 
     c(person(given = "Kaitlyn",
            family = "Thomas-Franz",
-           role = c("aut"),
-           email = "kthomasfranz@wesleyan.edu",),
+           role = c("aut", "cre"),
+           email = "kthomasfranz@wesleyan.edu"),
     person(given = "Dhhyey",
            family = "Shah",
            role = c("aut"),
-           email = "dshah@wesleyan.edu",),
-   person(given= "Robert", family="Kabacoff", 
-         role=c("cre"), email="rkabacoff@wesleyan.edu"))
+           email = "dshah@wesleyan.edu"))
 Description: The goal of the imageNet package is to allow for users to produce customizable graphs of their networks, with option of producing plots in standard form and geographically when applicable.
 Date: 2019-12-12 
 BugReports: https://github.com/kthomasfranz/imageNet/issues
@@ -32,5 +30,6 @@ Suggests:
     knitr,
     rmarkdown,
     testthat
+URL: https://github.com/kthomasfranz/imageNet
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1

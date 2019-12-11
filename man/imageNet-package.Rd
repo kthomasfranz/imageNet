@@ -11,16 +11,16 @@ The goal of the imageNet package is to allow for users to produce customizable g
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://github.com/kthomasfranz/imageNet}
   \item Report bugs at \url{https://github.com/kthomasfranz/imageNet/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Robert Kabacoff \email{rkabacoff@wesleyan.edu}
+\strong{Maintainer}: Kaitlyn Thomas-Franz \email{kthomasfranz@wesleyan.edu}
 
 Authors:
 \itemize{
-  \item Kaitlyn Thomas-Franz \email{kthomasfranz@wesleyan.edu}
   \item Dhhyey Shah \email{dshah@wesleyan.edu}
 }
 
