@@ -40,11 +40,11 @@
 #' amongst the edge attributes that describes the second end of each edge. Default: 'destination'
 #' @return This function returns an interactive map with the network on it. This map is of the
 #' class Leaflet.
-#' @details Unless users have information on the centrality measures of their network that are
-#' already featured in their nodes/edges tables, if they would like to customize their geoNet graph
-#' using centrality these measurements they must input their network into the baseNet function and then
-#' input the tidygraph output into the geoNet function, making sure to include all node/edge specifications
-#' in the argument as necessary.
+#' @details If users wish to customize their geoNet graph based on measures of network centrality, unless they
+#' have this information on centrality measures for their network that are already featured in the
+#' nodes/edges tables of the network, users should input their network into the baseNet function and then
+#' use the tidygraph "data" output as the data argument for the geoNet function, making sure to specify
+#' the modified node/edge arguments as necessary.
 #'
 #' @examples
 #' \dontrun{
