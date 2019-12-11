@@ -1,0 +1,83 @@
+---
+title: "Introduction to the geoNet function"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{geoNet}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width=7.5, fig.height=6, fig.align = "center"
+)
+```
+The purpose of the **imageNet** package is to provide functions that help visualize networks and their attributes in a more intuitive way. As a part of this package, the **geoNet** function produces an interactive geographic map with the network imposed on it. The size and color of the nodes and edges can be changed according to the users preferences. This document is intended to show you how to best use the geoNet function.
+
+```{r setup, include=FALSE}
+library(imageNet)
+library(tidygraph)
+```
+
+## Example Dataset: Airports and Southwest Airlines flights data set
+To understand how to use the geoNet function, we’ll use the **airports** and **Southwest** datasets as an example. The ariports data, the data frame of nodes (each corresponding to an airport in this case), contains 2671 observations noting the longitude and the latitude of the airport and a few synthetic sample variables that we will use to show how we can tweak the node size and the node color. The Sothwest data, the data frame of edges (in this case of flights), gives us information on the origin and destination airports for each Southwest flight.  It also provides us with some extra attributes for each edge that we can use to tweak the width and color of each edge.  For more information about the data, please see ?imageNet::Southwest and ?imageNet::airports
+
+```{r message=FALSE, warning=FALSE, dpi=100, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+data(airports)
+data(Southwest)
+
+#Modify/clean airports dataset
+sw_nodes = unique(c(Southwest$ORIGIN, Southwest$DEST))
+k2 = airports$AIRPORT %in% sw_nodes
+airports=as.data.frame(airports[k2,])
+
+###Create synthetic node variables for the airports dataset
+airports$intvariable <- sample(9, size = nrow(airports), replace = TRUE)
+airports$factorvariable <- sample(4, size = nrow(airports), replace = TRUE)
+airports$factorvariable <- as.factor(airports$factorvariable)
+
+#Modify Southwest dataset
+flights <- subset(Southwest, select=c(3,4,2))
+flights$YEAR<-as.factor(flights$YEAR)
+flights$weight <- sample(7, size = nrow(flights), replace = TRUE)
+```
+
+
+#### Using **geoNet** to plot a simple network of the flights and airports with a constant node size and color and edge size and color
+```{r message=FALSE, warning=FALSE, dpi=100, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+m <- geoNet(df = flights, geodata = airports, node_color = "red", node_size = 3,
+               edge_color = 'cornflowerblue', edge_size = 4, name = "AIRPORT", lat = "LATITUDE",
+               lng = "LONGITUDE", orig = "ORIGIN", dest = "DEST")
+m
+```
+As shown above, the function requires that we tell it what the variable names are for the longitude, latitude and the name variables of the node set and what the names of the to and the from variables are in the edge set. We set the node_color, node_size, edge_color and edge_size to constant values right now.
+
+#### Using **geoNet** to plot the same network but associating the edge colors with a qualitative variable and the node colors with a numeric variable (YEAR and intvariable respectively in this case)
+```{r message=FALSE, warning=FALSE, dpi=100, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+m <- geoNet(df = flights, geodata = airports, node_color = "intvariable", node_size = 3, edge_color = 'YEAR', edge_size = 4, name = "AIRPORT", lat = "LATITUDE",
+               lng = "LONGITUDE", orig = "ORIGIN", dest = "DEST")
+m
+```
+
+#### Using **geoNet** to plot the same network but associating the edge colors with a quantitative variable and both node size and node color with a numeric variable (weight and intvariable respectively in this case)
+```{r message=FALSE, warning=FALSE, dpi=100, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+m <- geoNet(df = flights, geodata = airports, node_color = "intvariable", node_size = "intvariable",
+               edge_color = 'weight', edge_size = 4, name = "AIRPORT", lat = "LATITUDE",
+               lng = "LONGITUDE", orig = "ORIGIN", dest = "DEST")
+m
+```
+
+#### Using **geoNet** to plot the same network but associating both the edge colors and edge size with a quantitative variable and node size with a numeric variable and node color with a qualitative variable (weight, intvariable and factorvariable respectively in this case)
+```{r message=FALSE, warning=FALSE, dpi=100, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+m <- geoNet(df = flights, geodata = airports, node_color = "factorvariable", node_size = "intvariable",
+               edge_color = 'weight', edge_size = "weight", name = "AIRPORT", lat = "LATITUDE",
+               lng = "LONGITUDE", orig = "ORIGIN", dest = "DEST")
+m
+```
+
+To use centrality measures to determine the color and size of nodes and edges in **geoNet**, first pass the network through the **baseNet** function and then pipe its output to the **geoNet** function while passing the name of the variable of the corresponding centrality measure as node_color, node_size, edge_color, and/or edge_size.
+
+
+For more information on this function, please use ?imageNet::geoNet

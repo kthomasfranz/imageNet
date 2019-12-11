@@ -31,10 +31,10 @@
 #' of the network using a measure of centrality, the user must input one of the values featured bellow into the
 #' node_color/node_size aruguments, which correspond with following tidygraph centrality measurement functions:
 #' \itemize{
-##'  \item{betweenness:} { centrality_betweenness()}
-##'  \item{closeness:}{ centrality_closeness()}
-##'  \item{degree:}{ centrality_degree()}
-##'  \item{eigen:}{ centrality_eigen()}
+##'  \item{\strong{betweenness}:} { centrality_betweenness()}
+##'  \item{\strong{closeness}:}{ centrality_closeness()}
+##'  \item{\strong{degree}:}{ centrality_degree()}
+##'  \item{\strong{eigen}:}{ centrality_eigen()}
 ##' }
 ##' Users also have the option of customizing the edges of their network using the variable \strong{edge_weight}, which
 ##' notes the weight between two edges.

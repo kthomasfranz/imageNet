@@ -6,10 +6,10 @@
 \title{US Airports}
 \format{A data frame with 2671 rows and 4 variables:
 \describe{
-  \item{\code{AIRPORT}}{integer, the 3-letter code of an airport}
-  \item{\code{AP_FULL_NAME}}{integer, the full name of an airport}
-  \item{\code{LATITUDE}}{double, geographic latitude}
-  \item{\code{LONGITUDE}}{double, geographic longitude}
+  \item{\code{AIRPORT}}{character, the 3-letter code of an airport}
+  \item{\code{AP_FULL_NAME}}{character, the full name of an airport}
+  \item{\code{LATITUDE}}{double, geographic latitude of airport}
+  \item{\code{LONGITUDE}}{double, geographic longitude of airport}
 }}
 \source{
 US Bureau of Transportation Statistics: Airline On-Time Performance Database

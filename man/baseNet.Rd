@@ -15,12 +15,12 @@ See ?tbl_graph for more information about accepted classes of networks.}
 \item{nodes}{A data.frame containing information about the nodes in the graph. Default: NULL}
 
 \item{layout}{The type of layout used to plot the network using ggraph. Either a valid string, a function, a matrix,
-or a data.frame. See ?ggraph for more information. Default: 'lgl'}
+or a data.frame. See ?ggraph for more information. Default: "lgl"}
 
 \item{label}{The variable from the nodes table that should be used to label the nodes in
 the plotted network. Default: first column of the nodes table}
 
-\item{label_color}{The color of the label. Default: 'navy'}
+\item{label_color}{The color of the label. Default: "navy"}
 
 \item{directed}{Indicates if the constructed graph should be directed. Default: F}
 
@@ -55,10 +55,10 @@ add further modifications to the ggmap plot, such as editing the title.  In orde
 of the network using a measure of centrality, the user must input one of the values featured bellow into the
 node_color/node_size aruguments, which correspond with following tidygraph centrality measurement functions:
 \itemize{
- \item{betweenness:} { centrality_betweenness()}
- \item{closeness:}{ centrality_closeness()}
- \item{degree:}{ centrality_degree()}
- \item{eigen:}{ centrality_eigen()}
+ \item{\strong{betweenness}:} { centrality_betweenness()}
+ \item{\strong{closeness}:}{ centrality_closeness()}
+ \item{\strong{degree}:}{ centrality_degree()}
+ \item{\strong{eigen}:}{ centrality_eigen()}
 }
 Users also have the option of customizing the edges of their network using the variable \strong{edge_weight}, which
 notes the weight between two edges.
