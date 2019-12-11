@@ -2,7 +2,7 @@
 % Please edit documentation in R/baseNet.R
 \name{baseNet}
 \alias{baseNet}
-\title{Creates a visual graph of a given network}
+\title{Creates a graph of a standard network}
 \usage{
 baseNet(data, nodes = NULL, layout = "lgl", label, label_color,
   directed = F, node_color, node_size, edge_color, edge_size)

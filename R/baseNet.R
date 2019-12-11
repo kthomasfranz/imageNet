@@ -1,4 +1,4 @@
-#' @title Creates a visual graph of a given network
+#' @title Creates a graph of a standard network
 #' @description \code{baseNet} helps provide users with clear, concise visualizations of
 #' their standard network graphs so that they can perform an effective analysis of the network.
 #' @param data A network object that can be converted to a tidygraph tbl_graph
