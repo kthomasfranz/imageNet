@@ -73,6 +73,7 @@ input the tidygraph output into the geoNet function, making sure to include all 
 in the argument as necessary.
 }
 \examples{
+\dontrun{
 data(airports)
 data(Southwest)
 
@@ -86,4 +87,5 @@ edge_color = 'cornflowerblue', edge_size = 4, name = "AIRPORT", lat = "LATITUDE"
 orig = "ORIGIN", dest = "DEST")
 
 m
+}
 }

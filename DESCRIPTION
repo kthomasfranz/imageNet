@@ -27,8 +27,7 @@ Imports:
     igraphdata,
     leaflet,
     dplyr,
-    igraph,
-    ggmap
+    igraph
 Suggests: 
     knitr,
     rmarkdown,

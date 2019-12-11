@@ -47,9 +47,11 @@
 #' @import readr
 #' @import igraphdata
 #' @examples
+#' \dontrun{
 #' library(igraphdata)
 #' data("karate")
 #' baseNet(karate, label=name, layout="nicely")
+#' }
 #' @rdname baseNet
 #' @export
 

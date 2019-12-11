@@ -47,6 +47,7 @@
 #' in the argument as necessary.
 #'
 #' @examples
+#' \dontrun{
 #' data(airports)
 #' data(Southwest)
 #'
@@ -60,6 +61,7 @@
 #' orig = "ORIGIN", dest = "DEST")
 #'
 #' m
+#' }
 #' @rdname geoNet
 #' @import dplyr
 #' @import leaflet

@@ -64,7 +64,9 @@ Users also have the option of customizing the edges of their network using the v
 notes the weight between two edges.
 }
 \examples{
+\dontrun{
 library(igraphdata)
 data("karate")
 baseNet(karate, label=name, layout="nicely")
+}
 }

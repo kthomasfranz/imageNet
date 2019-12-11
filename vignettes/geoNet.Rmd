@@ -21,8 +21,8 @@ library(imageNet)
 library(tidygraph)
 ```
 
-## Example Dataset: Airports and Southwest Airlines flights data set
-To understand how to use the geoNet function, we’ll use the **airports** and **Southwest** datasets as an example. The ariports data, the data frame of nodes (each corresponding to an airport in this case), contains 2671 observations noting the longitude and the latitude of the airport and a few synthetic sample variables that we will use to show how we can tweak the node size and the node color. The Sothwest data, the data frame of edges (in this case of flights), gives us information on the origin and destination airports for each Southwest flight.  It also provides us with some extra attributes for each edge that we can use to tweak the width and color of each edge.  For more information about the data, please see ?imageNet::Southwest and ?imageNet::airports
+## Example Dataset: Airports and Southwest Airlines flights data sets
+To understand how to use the geoNet function, we’ll use the **airports** and **Southwest** datasets as an example. The airports data set, the data frame of nodes, contains 2671 observations noting the longitude and the latitude of each airport.  For the nodes table, we will also generate a few synthetic sample variables that we will use to show how we can modify the node size and the node color of the network graph. The Southwest data, the data frame of edges, gives us information on the origin and destination airports for each Southwest flight.  It also provides us with some extra attributes for each edge that we can use to tweak the width and color of each edge.  For more information about the data, please see ?imageNet::Southwest and ?imageNet::airports
 
 ```{r message=FALSE, warning=FALSE, dpi=100, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
 data(airports)
@@ -48,8 +48,7 @@ flights$weight <- sample(7, size = nrow(flights), replace = TRUE)
 #### Using **geoNet** to plot a simple network of the flights and airports with a constant node size and color and edge size and color
 ```{r message=FALSE, warning=FALSE, dpi=100, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
 m <- geoNet(df = flights, geodata = airports, node_color = "red", node_size = 3,
-               edge_color = 'cornflowerblue', edge_size = 4, name = "AIRPORT", lat = "LATITUDE",
-               lng = "LONGITUDE", orig = "ORIGIN", dest = "DEST")
+               edge_color = 'cornflowerblue', edge_size = 4, name = "AIRPORT", lat = "LATITUDE", lng = "LONGITUDE", orig = "ORIGIN", dest = "DEST")
 m
 ```
 As shown above, the function requires that we tell it what the variable names are for the longitude, latitude and the name variables of the node set and what the names of the to and the from variables are in the edge set. We set the node_color, node_size, edge_color and edge_size to constant values right now.
