@@ -4,4 +4,7 @@ pkgdown_sha: ~
 articles:
   baseNet: baseNet.html
   geoNet: geoNet.html
+urls:
+  reference: http://kthomasfranz.github.io/imageNet/reference
+  article: http://kthomasfranz.github.io/imageNet/articles
 

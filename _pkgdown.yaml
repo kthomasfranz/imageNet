@@ -2,37 +2,37 @@ title: imageNet
 url: http://kthomasfranz.github.io/imageNet
 template:
   params:
-  bootswatch: cerulean
+    bootswatch: flatly
 reference:
   - title: Main Functions
-desc: ~
-  contents:
-  - '`baseNet`'
-- '`geoNet`'
-- title: Datasets
-desc: ~
-  contents:
-  - '`airports`'
-- '`Southwest`'
+    desc: ~
+    contents:
+      - '`baseNet`'
+      - '`geoNet`'
+  - title: Datasets
+    desc: ~
+    contents:
+      - '`airports`'
+      - '`Southwest`'
 navbar:
   type: inverse
-left:
-  - icon: fa-home
-href: index.html
-right:
-  - text: "Articles"
-icon: fas fa-book
-menu:
-  -  text: Introduction to the baseNet function
-href: articles/baseNet.html
--  text: Introduction to the geoNet function
-href: articles/geoNet.html
-- icon: fa-newspaper-o
-text: "news"
-href: news/index.html
-- icon: fa-file-code-o
-text: "functions"
-href: reference/index.html
-- icon: fa-github fa-lg
-text: "github"
-href: https://github.com/kthomasfranz/imageNet/
+  left:
+    - icon: fa-home
+      href: index.html
+  right:
+    - text: "Articles"
+      icon: fas fa-book
+      menu:
+      -  text: Introduction to the baseNet function
+         href: articles/baseNet.html
+      -  text: Introduction to the geoNet function
+         href: articles/geoNet.html
+    - icon: fa-newspaper-o
+      text: "news"
+      href: news/index.html
+    - icon: fa-file-code-o
+      text: "functions"
+      href: reference/index.html
+    - icon: fa-github fa-lg
+      text: "github"
+      href: https://github.com/kthomasfranz/imageNet/
